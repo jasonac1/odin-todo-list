@@ -230,6 +230,18 @@ dialog:open {
 
         label {
             font-weight: bold;
+
+            &:has(+ input:required) {
+                &::after {
+                    content: "*";
+                }
+            }
+
+            &:has(+ select:required) {
+                &::after {
+                    content: "*";
+                }
+            }
         }
 
         input,

@@ -32,4 +32,4 @@ const savedProjects = Storage.parseAsProjects(data);
 const displayController = new Display();
 // displayController.displayCurrentProjectLayout(savedProjects, savedProjects[0]);
 
-displayController.displayAllProjectsLayout(savedProjects);
+displayController.displayCurrentProjectLayout(savedProjects, savedProjects[0]);

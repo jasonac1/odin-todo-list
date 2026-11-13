@@ -141,6 +141,10 @@ aside {
         color: var(--main-bg-color);
         height: 3rem;
         padding: 0 2rem;
+
+        &::after {
+            content: "New Project";
+        }
     }
 }
 
@@ -252,6 +256,11 @@ dialog:open {
         select {
             text-indent: 0.5rem;
         }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+        }
     }
 }
 
@@ -310,5 +319,13 @@ dialog:open {
 
     &::after {
         content: "Cancel";
+    }
+}
+
+.btn-close {
+    background-color: var(--neutral-200-color);
+
+    &::after {
+        content: "Close";
     }
 }

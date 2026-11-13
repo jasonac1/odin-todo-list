@@ -1,7 +1,4 @@
-import Project from "./todo.js";
-import Storage from "./storage.js";
-import { format, parseISO } from "date-fns";
-import todo from "./todo.js";
+import { format } from "date-fns";
 
 export default class {
     // Source - https://stackoverflow.com/a/71964580
@@ -197,7 +194,6 @@ export default class {
     }
 
     buildProjectDialog(project, mode) {
-        const dialog = this.createElementFromSelector("dialog#dialog");
         const dialogForm = this.createElementFromSelector(
             "form#project-dialog-form",
         );
@@ -245,7 +241,6 @@ export default class {
             `button.btn-${modeMapping[mode]}`,
         );
 
-        dialog.appendChild(dialogForm);
         dialogForm.appendChild(dialogFormH2);
         dialogForm.appendChild(dialogFormControlTitleDiv);
         dialogFormControlTitleDiv.appendChild(dialogFormControlTitleLabel);
@@ -254,19 +249,10 @@ export default class {
         dialogFormActionsDiv.appendChild(dialogFormCancelButton);
         dialogFormActionsDiv.appendChild(dialogFormActionButton);
 
-        dialogFormCancelButton.addEventListener("click", (e) => {
-            dialog.remove();
-        });
-        dialogForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            dialog.remove();
-        });
-
-        return dialog;
+        return dialogForm;
     }
 
     buildTodoDialog(todo, mode) {
-        const dialog = this.createElementFromSelector("dialog#dialog");
         const dialogForm = this.createElementFromSelector(
             "form#todo-dialog-form",
         );
@@ -416,7 +402,6 @@ export default class {
             `button.btn-${modeMapping[mode]}`,
         );
 
-        dialog.appendChild(dialogForm);
         dialogForm.appendChild(dialogFormH2);
 
         dialogForm.appendChild(dialogFormControlTitleDiv);
@@ -452,18 +437,7 @@ export default class {
             dialogFormActionsDiv.appendChild(dialogFormActionButton);
         }
 
-        dialogFormCancelButton.addEventListener("click", (e) => {
-            dialog.remove();
-        });
-        dialogFormCloseButton.addEventListener("click", (e) => {
-            dialog.remove();
-        });
-        dialogForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            dialog.remove();
-        });
-
-        return dialog;
+        return dialogForm;
     }
 
     displayAllProjectsLayout(projects) {
@@ -485,16 +459,18 @@ export default class {
     }
 
     displayProjectDialog(project, mode) {
-        const dialog = this.buildProjectDialog(project, mode);
-
-        document.querySelector("body").appendChild(dialog);
+        const dialog = document.querySelector("#dialog");
+        dialog.textContent = "";
+        const dialogContent = this.buildProjectDialog(project, mode);
+        dialog.appendChild(dialogContent);
         dialog.showModal();
     }
 
     displayTodoDialog(todo, mode) {
-        const dialog = this.buildTodoDialog(todo, mode);
-
-        document.querySelector("body").appendChild(dialog);
+        const dialog = document.querySelector("#dialog");
+        dialog.textContent = "";
+        const dialogContent = this.buildTodoDialog(todo, mode);
+        dialog.appendChild(dialogContent);
         dialog.showModal();
     }
 }

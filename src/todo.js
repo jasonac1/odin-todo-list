@@ -16,11 +16,11 @@ export default class {
         }
     };
 
-    addTodoItem(item) {
+    createTodoItem(item) {
         this.items.push(new this.#TodoItem(item));
     }
 
-    removeTodoItem(id) {
+    deleteTodoItem(id) {
         const indexToDelete = this.items.findIndex((item) => item.id === id);
         this.items.splice(indexToDelete, 1);
     }

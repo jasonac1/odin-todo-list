@@ -12,7 +12,11 @@ export default class {
             this.description = item.description;
             this.dueDate = item.dueDate;
             this.priority = item.priority;
-            this.checklist = item.checklist;
+            this.checklist = false;
+        }
+
+        toggleChecklist() {
+            this.checklist = !this.checklist;
         }
     };
 
@@ -31,6 +35,5 @@ export default class {
         this.items[indexToEdit].description = item.description;
         this.items[indexToEdit].dueDate = item.dueDate;
         this.items[indexToEdit].priority = item.priority;
-        this.items[indexToEdit].checklist = item.checklist;
     }
 }

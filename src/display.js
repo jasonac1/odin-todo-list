@@ -29,6 +29,10 @@ export default class {
         const sidebarLi = this.createElementFromSelector("li");
         const sidebarH2 = this.createElementFromSelector("h2");
         sidebarH2.textContent = "All Projects";
+        sidebarH2.addEventListener("click", () => {
+            this.displayAllProjectsLayout(projects);
+        });
+
         const sidebarProjectUl =
             this.createElementFromSelector("ul.project-list");
 
@@ -37,6 +41,10 @@ export default class {
             const sidebarProjectLi = this.createElementFromSelector(
                 "li.project-list-item",
             );
+            sidebarProjectLi.addEventListener("click", () => {
+                this.displayCurrentProjectLayout(projects, project);
+            });
+
             sidebarProjectLis.push(sidebarProjectLi);
 
             const sidebarProjectIconDiv =

@@ -27,5 +27,8 @@ const appController = (() => {
     //     savedProjects,
     //     savedProjects[0],
     // );
-    displayController.displayAllProjectsLayout(savedProjects);
+    displayController.displayCurrentProjectLayout(
+        savedProjects,
+        savedProjects[0],
+    );
 })();

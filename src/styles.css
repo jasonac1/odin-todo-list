@@ -30,6 +30,7 @@ button {
 /* project properties */
 :root {
     --sidebar-bg-color: #16213e;
+    --sidebar-lighter-bg-color: #2d3751;
     --main-bg-color: #f9f9f9;
 
     --light-text-color: var(--main-bg-color);
@@ -79,6 +80,10 @@ aside {
         gap: 2rem;
         list-style: none;
 
+        h2:hover {
+            background-color: var(--sidebar-lighter-bg-color);
+        }
+
         .project-list {
             display: grid;
             gap: 2rem;
@@ -87,6 +92,10 @@ aside {
                 display: flex;
                 align-items: center;
                 gap: 1rem;
+
+                &:hover {
+                    background-color: var(--sidebar-lighter-bg-color);
+                }
 
                 .project-icon {
                     background-image: url("./images/project.svg");

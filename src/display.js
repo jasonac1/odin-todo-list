@@ -140,6 +140,7 @@ export default class {
         project.items.forEach((todo) => {
             const mainTodoDiv = this.createElementFromSelector("div.todo");
             mainTodoDiv.dataset.id = todo.id;
+            mainTodoDiv.dataset.priority = todo.priority;
             mainTodoDivs.push(mainTodoDiv);
 
             const mainTodoCheckbox = this.createElementFromSelector(

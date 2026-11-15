@@ -47,6 +47,10 @@ button {
     --neutral-100-color: #a3b4bc;
     --neutral-200-color: #7b939f;
     --neutral-300-color: #607d8b;
+
+    --low-priority-color: #90be6d;
+    --medium-priority-color: #f9c74f;
+    --high-priority-color: #f94144;
 }
 
 body {
@@ -187,6 +191,18 @@ aside {
             input[type="checkbox"] {
                 width: 2rem;
                 height: 2rem;
+            }
+
+            &[data-priority="0"] h2 {
+                background-color: var(--low-priority-color);
+            }
+
+            &[data-priority="1"] h2 {
+                background-color: var(--medium-priority-color);
+            }
+
+            &[data-priority="2"] h2 {
+                background-color: var(--high-priority-color);
             }
 
             .todo-actions {

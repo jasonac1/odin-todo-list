@@ -86,8 +86,9 @@ export default class {
         projects.forEach((project) => {
             const mainProjectCardDiv =
                 this.createElementFromSelector("div.project-card");
-            mainProjectCardDiv.addEventListener("click", () => {
-                this.displayCurrentProjectLayout(projects, project);
+            mainProjectCardDiv.addEventListener("click", (e) => {
+                if (e.target.matches(".project-card"))
+                    this.displayCurrentProjectLayout(projects, project);
             });
             mainProjectCardDivs.push(mainProjectCardDiv);
 

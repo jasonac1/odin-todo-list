@@ -131,6 +131,7 @@ export default class {
 
     buildCurrentProjectMain(project) {
         const main = this.createElementFromSelector("main.current-project");
+        main.dataset.id = project.id;
         const mainH1 = this.createElementFromSelector("h1");
         mainH1.textContent = project.title;
 
@@ -144,6 +145,7 @@ export default class {
             const mainTodoCheckbox = this.createElementFromSelector(
                 "input@type=checkbox",
             );
+            mainTodoCheckbox.checked = todo.checklist;
 
             const mainTodoH2 = this.createElementFromSelector("h2");
             mainTodoH2.textContent = todo.title;
@@ -206,6 +208,10 @@ export default class {
             "form#project-dialog-form",
         );
         dialogForm.action = "#";
+        if (Object.keys(project).length > 0) {
+            dialogForm.dataset.id = project.id;
+        }
+        dialogForm.dataset.mode = mode === "new-project" ? "create" : mode;
 
         const dialogFormH2 = this.createElementFromSelector("h2");
         dialogFormH2.textContent = `${
@@ -237,8 +243,11 @@ export default class {
             this.createElementFromSelector("div.form-actions");
         const dialogFormCancelButton =
             this.createElementFromSelector("button.btn-cancel");
-        dialogFormCancelButton.formMethod = "dialog";
+        dialogFormCancelButton.addEventListener("click", (e) => {
+            e.target.closest("dialog").close();
+        });
         dialogFormCancelButton.formNoValidate = true;
+        dialogFormCancelButton.type = "button";
 
         const modeMapping = {
             "new-project": "create",
@@ -265,6 +274,10 @@ export default class {
             "form#todo-dialog-form",
         );
         dialogForm.action = "#";
+        if (Object.keys(todo).length > 0) {
+            dialogForm.dataset.id = todo.id;
+        }
+        dialogForm.dataset.mode = mode;
 
         const dialogFormH2 = this.createElementFromSelector("h2");
         dialogFormH2.textContent = `${mode.charAt(0).toUpperCase() + mode.slice(1)} Todo`;
@@ -392,8 +405,11 @@ export default class {
             this.createElementFromSelector("div.form-actions");
         const dialogFormCancelButton =
             this.createElementFromSelector("button.btn-cancel");
-        dialogFormCancelButton.formMethod = "dialog";
+        dialogFormCancelButton.addEventListener("click", (e) => {
+            e.target.closest("dialog").close();
+        });
         dialogFormCancelButton.formNoValidate = true;
+        dialogFormCancelButton.type = "button";
 
         const dialogFormCloseButton =
             this.createElementFromSelector("button.btn-close");

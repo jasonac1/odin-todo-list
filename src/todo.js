@@ -12,7 +12,7 @@ export default class {
             this.description = item.description;
             this.dueDate = item.dueDate;
             this.priority = item.priority;
-            this.checklist = false;
+            this.checklist = item.checklist;
         }
 
         toggleChecklist() {
